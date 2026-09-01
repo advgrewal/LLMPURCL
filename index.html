@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="LLM Campus — personal LL.M. academic dashboard">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <title>LLM Campus</title>
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">⚖</div>
+          <div><strong>LLM Campus</strong><small>LL.M. 1st Year</small></div>
+        </div>
+        <button class="icon-btn" id="installBtn" hidden aria-label="Install app">＋</button>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section class="hero">
+        <div>
+          <div class="eyebrow" id="todayDate"></div>
+          <h1 id="greeting">Good day</h1>
+          <p class="muted">Your academic day at a glance.</p>
+        </div>
+        <div class="next-card" id="nextCard"></div>
+      </section>
+
+      <section class="stats" id="stats"></section>
+
+      <nav class="day-tabs" id="dayTabs" aria-label="Days"></nav>
+
+      <section id="todaySection">
+        <div class="section-head">
+          <h2 id="scheduleTitle">Today's lectures</h2>
+          <button class="text-btn" id="refreshBtn">Refresh</button>
+        </div>
+        <div id="schedule"></div>
+      </section>
+
+      <section id="subjectsSection" class="view-section hidden">
+        <div class="section-head"><h2>Subjects</h2></div>
+        <div id="subjects" class="card-grid"></div>
+      </section>
+
+      <section id="attendanceSection" class="view-section hidden">
+        <div class="section-head">
+          <h2>Attendance</h2>
+          <button class="text-btn" id="resetAttendance">Reset</button>
+        </div>
+        <div id="attendance"></div>
+      </section>
+
+      <section id="notesSection" class="view-section hidden">
+        <div class="section-head">
+          <h2>Quick Notes</h2>
+          <button class="text-btn" id="saveNotes">Save</button>
+        </div>
+        <textarea id="notes" class="notes" placeholder="Write lecture points, cases, questions or reminders..."></textarea>
+        <p class="muted tiny">Saved only on this device in the browser.</p>
+      </section>
+
+      <section id="weekSection" class="view-section hidden">
+        <div class="section-head"><h2>Weekly timetable</h2></div>
+        <div id="week"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-view="today" class="nav-item active">🏠<span>Today</span></button>
+      <button data-view="week" class="nav-item">📅<span>Week</span></button>
+      <button data-view="subjects" class="nav-item">📚<span>Subjects</span></button>
+      <button data-view="attendance" class="nav-item">📊<span>Attendance</span></button>
+      <button data-view="notes" class="nav-item">📝<span>Notes</span></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
